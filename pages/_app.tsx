@@ -1,9 +1,11 @@
+import type { AppProps } from 'next/app'
 import 'nextra-theme-blog/style.css'
 import Head from 'next/head'
 
 import '../styles/main.css'
 
-export default function Nextra({ Component, pageProps }) {
+export default function Nextra({ Component, pageProps }: AppProps) {
+  console.log(Component, pageProps)
   return (
     <>
       <Head>
@@ -21,6 +23,7 @@ export default function Nextra({ Component, pageProps }) {
           crossOrigin="anonymous"
         />
       </Head>
+      <div>something</div>
       <Component {...pageProps} />
     </>
   )
