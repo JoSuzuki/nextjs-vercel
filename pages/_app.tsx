@@ -1,11 +1,10 @@
 import type { AppProps } from 'next/app'
-import 'nextra-theme-blog/style.css'
+import '../theme/style.css'
 import Head from 'next/head'
 
 import '../styles/main.css'
 
 export default function Nextra({ Component, pageProps }: AppProps) {
-  console.log(Component, pageProps)
   return (
     <>
       <Head>
@@ -22,8 +21,11 @@ export default function Nextra({ Component, pageProps }: AppProps) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk"
+          rel="stylesheet"
+        />
       </Head>
-      <div>something</div>
       <Component {...pageProps} />
     </>
   )

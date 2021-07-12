@@ -3,7 +3,7 @@ import Document, {
   Head,
   Main,
   NextScript,
-  DocumentContext
+  DocumentContext,
 } from 'next/document'
 
 class MyDocument extends Document {
@@ -17,7 +17,7 @@ class MyDocument extends Document {
       title: 'JoSuzuki Blog',
       description: 'A personal blog.',
       image:
-        'https://assets.vercel.com/image/upload/q_auto/front/vercel/dps.png'
+        'https://assets.vercel.com/image/upload/q_auto/front/vercel/dps.png',
     }
 
     return (
@@ -30,12 +30,12 @@ class MyDocument extends Document {
           <meta property="og:title" content={meta.title} />
           <meta property="og:image" content={meta.image} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@yourname" />
+          <meta name="twitter:site" content="@jo_suzuki" />
           <meta name="twitter:title" content={meta.title} />
           <meta name="twitter:description" content={meta.description} />
           <meta name="twitter:image" content={meta.image} />
         </Head>
-        <body>
+        <body data-theme="light">
           <Main />
           <NextScript />
         </body>

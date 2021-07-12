@@ -14,7 +14,37 @@
   font-named-instance: 'Italic';
 }
 
+body[data-theme='light'] {
+  --colors-primary: var(--colors-light-purple);
+  --colors-secondary: yellow;
+  --colors-accent: var(--colors-purple);
+  --colors-text: var(--colors-black);
+}
+
+*::selection {
+  color: white;
+  background-color: var(--colors-selection);
+}
+
 body {
+  /* constants */
+  /* colors */
+  --colors-white: white;
+  --colors-black: black;
+  --colors-light-gray: #e9f1f7;
+  --colors-selection: #3297fd;
+  --colors-purple: #432a79;
+  --colors-light-purple: #645dd7;
+  /* font-sizes */
+  --font-sizes-lg: 36px;
+  /* font-weights */
+  --font-weights-bold: 'wght' 850;
+  /* spacing */
+  --spaces-sm: 4px;
+  --spaces-md: 16px;
+
+  background-color: var(--colors-light-gray);
+
   font-family: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -48,6 +78,10 @@ h2 {
   }
 }
 
+hr {
+  border-color: var(--colors-accent) !important;
+}
+
 details summary {
   cursor: pointer;
 }
@@ -57,7 +91,7 @@ img.next-image {
 }
 
 .prose a {
-  color: #0074de;
+  color: var(--colors-primary);
 }
 
 .nav-line .nav-link {
