@@ -14,25 +14,17 @@ import getTitle from './utils/get-title'
 import getTags from './utils/get-tags'
 import sortDate from './utils/sort-date'
 
-// comments
-const ReactCusdis = dynamic(
-  () => import('react-cusdis').then((mod) => mod.ReactCusdis),
-  { ssr: false },
-)
-
 // type = 'post' | 'page' | 'tag' | 'customPage' | 'customPost'
 
 const Layout = ({
-  config,
   meta,
   navPages,
   postList,
   back,
   title,
-  comments,
   children,
 }) => {
-  console.log(children);
+  console.log(children)
   const [titleNode, contentNodes] = getTitle(children)
   const type = meta.type || 'post'
 
@@ -43,23 +35,18 @@ const Layout = ({
           <React.Fragment>
             <Head>
               <title>{title}</title>
-              {config.head || null}
             </Head>
             <article className="container prose prose-sm md:prose">
               {titleNode}
               {type === 'post' ? (
-                <Meta {...meta} back={back} config={config} />
+                <Meta {...meta} back={back} />
               ) : (
                 <Nav navPages={navPages} />
               )}
               <MDXTheme>
                 {contentNodes}
-                {type === 'post' ? config.postFooter : null}
-                {type === 'post' ? comments : null}
               </MDXTheme>
               {postList}
-
-              {config.footer}
             </article>
           </React.Fragment>
         )
@@ -68,7 +55,6 @@ const Layout = ({
           <React.Fragment>
             <Head>
               <title>{title}</title>
-              {config.head || null}
             </Head>
             <MDXTheme>{contentNodes}</MDXTheme>
           </React.Fragment>
@@ -78,7 +64,6 @@ const Layout = ({
           <React.Fragment>
             <Head>
               <title>{title}</title>
-              {config.head || null}
             </Head>
             <MDXTheme>{contentNodes}</MDXTheme>
           </React.Fragment>
@@ -90,14 +75,12 @@ const Layout = ({
           <React.Fragment>
             <Head>
               <title>{title}</title>
-              {config.head || null}
             </Head>
             <article className="container prose prose-sm md:prose">
               {titleNode}
               <Nav navPages={navPages} />
               <MDXTheme>{contentNodes}</MDXTheme>
               {postList}
-              {config.footer}
             </article>
           </React.Fragment>
         )
@@ -108,19 +91,6 @@ const Layout = ({
 }
 
 export default (opts, _config) => {
-  const config = Object.assign(
-    {
-      readMore: 'Read More →',
-      footer: (
-        <small style={{ display: 'block', marginTop: '8rem' }}>
-          CC BY-NC 4.0 2020 © Shu Ding.
-        </small>
-      ),
-      postFooter: null,
-    },
-    _config,
-  )
-
   console.log('opts', opts)
 
   // gather info for tag/posts pages
@@ -166,9 +136,7 @@ export default (opts, _config) => {
 
   // back button
   let back = null
-  if (type !== 'post') {
-    back = null
-  } else {
+  if (type === 'post') {
     const parentPages = []
     traverse(opts.pageMap, (page) => {
       if (
@@ -187,6 +155,7 @@ export default (opts, _config) => {
   }
 
   return (props) => {
+    console.log('render inside');
     const router = useRouter()
     const { query } = router
 
@@ -202,29 +171,6 @@ export default (opts, _config) => {
         ? ReactDOMServer.renderToStaticMarkup(titleNode.props.children)
         : null) ||
       ''
-
-    let comments
-
-    if (config.cusdis) {
-      if (!config.cusdis.appId) {
-        console.warn('[cusdis]', '`appId` is required')
-      } else {
-        comments = (
-          <ReactCusdis
-            lang={config.cusdis.lang}
-            style={{
-              marginTop: '4rem',
-            }}
-            attrs={{
-              host: config.cusdis.host || 'https://cusdis.com',
-              appId: config.cusdis.appId,
-              pageId: router.pathname,
-              pageTitle: title,
-            }}
-          />
-        )
-      }
-    }
 
     const postList = posts ? (
       <ul>
@@ -249,14 +195,11 @@ export default (opts, _config) => {
             post.frontMatter && post.frontMatter.description ? (
               <p className="post-item-desc">
                 {post.frontMatter.description}
-                {config.readMore ? (
-                  <Link href={post.route}>
-                    <a className="post-item-more">{config.readMore}</a>
-                  </Link>
-                ) : null}
+                <Link href={post.route}>
+                  <a className="post-item-more">Read More →</a>
+                </Link>
               </p>
             ) : null
-
           return (
             <div key={post.route} className="post-item">
               <h3>
@@ -274,12 +217,10 @@ export default (opts, _config) => {
 
     return (
       <Layout
-        config={config}
         postList={postList}
         navPages={navPages}
         back={back}
         title={title}
-        comments={comments}
         {...opts}
         {...props}
       />
