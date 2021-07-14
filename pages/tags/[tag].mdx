@@ -4,10 +4,9 @@ title: Tagged Posts
 ---
 
 import { useRouter } from 'next/router'
+import Posts from '../../components/posts/posts'
+import { TagName } from '../../components/tag/tag'
 
-export const TagName = () => {
-  const { tag } = useRouter().query
-  return tag || null
-}
+# Posts tagged with “<TagName/>”
 
-# Posts Tagged with “<TagName/>”
+<Posts />

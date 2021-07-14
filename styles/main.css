@@ -18,6 +18,7 @@ body[data-theme='light'] {
   --colors-primary: var(--colors-light-purple);
   --colors-secondary: #cc8899;
   --colors-accent: var(--colors-purple);
+  --colors-accent-background: var(--colors-purple-background);
   --colors-text: var(--colors-black);
 }
 
@@ -33,9 +34,11 @@ body {
   --colors-black: black;
   --colors-light-gray: #e9f1f7;
   --colors-selection: #3297fd;
+  --colors-purple-background: #ebe2ff;
   --colors-purple: #432a79;
   --colors-light-purple: #645dd7;
   /* font-sizes */
+  --font-sizes-xs: 0.75rem;
   --font-sizes-sm: 0.875rem;
   --font-sizes-md: 1rem;
   --font-sizes-lg: 2rem;

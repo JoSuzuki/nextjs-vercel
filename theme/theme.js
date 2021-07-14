@@ -1,21 +1,17 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 
-import { PagesContext } from '../../components/use-pages-context/use-pages-context'
-import Article from '../../components/article/article'
+import { PagesContext } from '../components/use-pages-context/use-pages-context'
+import Article from '../components/article/article'
 
-import Meta from './meta'
-import Nav from './nav'
-import MDXTheme from '../../components/mdx-theme/mdx-theme'
-import Navbar from '../../components/navbar/navbar'
+import MDXTheme from '../components/mdx-theme/mdx-theme'
+import Navbar from '../components/navbar/navbar'
+import Footer from '../components/footer/footer'
 
 import traverse from './utils/traverse'
 import getTitle from './utils/get-title'
-import getTags from './utils/get-tags'
 import sortDate from './utils/sort-date'
 
 // type = 'post' | 'page' | 'tag' | 'customPage' | 'customPost'
@@ -36,6 +32,7 @@ const Layout = ({ meta, title, children }) => {
             <Article>
               {titleNode}
               <MDXTheme>{contentNodes}</MDXTheme>
+              <Footer />
             </Article>
           </React.Fragment>
         )
@@ -92,7 +89,10 @@ const withLayout = (opts, _config) => {
       page.frontMatter &&
       ['page', 'posts', 'customPage'].includes(page.frontMatter.type)
     ) {
-      if (page.route === route) {
+      if (
+        (route.includes(page.route) && page.route !== '/') ||
+        (route === page.route && page.route === '/')
+      ) {
         navPages.push({ ...page, active: true })
       } else {
         navPages.push(page)

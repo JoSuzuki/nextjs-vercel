@@ -9,8 +9,8 @@ const NavigationLinks = () => {
       {navPages.map((navPage) => {
         const pageName = navPage.frontMatter?.title ?? navPage.name
         return (
-          <li>
-            <Link key={navPage.route} href={navPage.route}>
+          <li key={navPage.route}>
+            <Link href={navPage.route}>
               <a
                 className={`nav-link ${navPage.active ? 'nav-current' : ''}`}
                 {...(navPage.active && { 'aria-current': 'page' })}
@@ -28,6 +28,16 @@ const NavigationLinks = () => {
         }
         .nav-current {
           color: var(--colors-accent);
+          position: relative;
+        }
+        .nav-current:after {
+          content: '';
+          position: absolute;
+          background-color: var(--colors-accent);
+          bottom: -3px;
+          right: -4px;
+          left: -4px;
+          height: 2px;
         }
         .nav-link {
           cursor: pointer;

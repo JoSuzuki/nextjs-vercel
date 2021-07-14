@@ -1,4 +1,4 @@
-const SocialMediaLinks = () => {
+const SocialMediaLinks = ({ size = '24px' }: { size?: string }) => {
   return (
     <div className="container">
       <a
@@ -10,8 +10,8 @@ const SocialMediaLinks = () => {
       >
         <svg
           version="1.1"
-          width="24px"
-          height="24px"
+          width={size}
+          height={size}
           x="0px"
           y="0px"
           viewBox="0 0 20 20"
@@ -29,8 +29,8 @@ const SocialMediaLinks = () => {
       >
         <svg
           version="1.1"
-          width="24px"
-          height="24px"
+          width={size}
+          height={size}
           x="0px"
           y="0px"
           viewBox="0 0 20 20"
@@ -44,8 +44,8 @@ const SocialMediaLinks = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           id="icon-feed"
-          height="24px"
-          width="24px"
+          height={size}
+          width={size}
         >
           <title>RSS logo</title>
           <circle cx="6.18" cy="17.82" r="2.18"></circle>

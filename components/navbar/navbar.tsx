@@ -1,10 +1,15 @@
+import Link from 'next/link'
 import JoSuzuki from '../josuzuki/josuzuki'
 import NavigationLinks from '../navigation-links/navigation-links'
 
 const Navbar = () => {
   return (
     <nav>
-      <JoSuzuki />
+      <Link href="/">
+        <a>
+          <JoSuzuki />
+        </a>
+      </Link>
       <NavigationLinks />
       <style jsx>{`
         nav {

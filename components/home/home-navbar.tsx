@@ -1,10 +1,15 @@
+import Link from 'next/link'
 import NavigationLinks from '../navigation-links/navigation-links'
 import JoSuzukiAnimated from './josuzuki-animated'
 
 const HomeNavbar = () => {
   return (
     <nav>
-      <JoSuzukiAnimated />
+      <Link href="/">
+        <a>
+          <JoSuzukiAnimated />
+        </a>
+      </Link>
       <NavigationLinks />
       <style jsx>{`
         nav {
