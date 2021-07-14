@@ -66,6 +66,7 @@ const Layout = ({ meta, title, children }) => {
             <Article>
               {titleNode}
               <MDXTheme>{contentNodes}</MDXTheme>
+              <Footer />
             </Article>
           </React.Fragment>
         )
