@@ -16,7 +16,7 @@
 
 body[data-theme='light'] {
   --colors-primary: var(--colors-light-purple);
-  --colors-secondary: #cc8899;
+  --colors-secondary: #af4a4a;
   --colors-accent: var(--colors-purple);
   --colors-accent-background: var(--colors-purple-background);
   --colors-text: var(--colors-black);
