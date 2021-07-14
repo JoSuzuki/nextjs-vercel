@@ -2,7 +2,9 @@
 title: Markdown Examples
 date: 2021/3/19
 description: View examples of all possible Markdown options.
-tag: web development
+tag:
+  - web development
+  - nice
 author: You
 ---
 
@@ -30,6 +32,8 @@ _This is italic text_
 
 > Develop. Preview. Ship. – Vercel
 
+---
+
 ## Lists
 
 Unordered
@@ -48,7 +52,7 @@ Ordered
 
 Inline `code`
 
-```
+```jsx highlight=5-10,19
 export default function Nextra({ Component, pageProps }) {
   return (
     <>
@@ -86,6 +90,7 @@ export default function Nextra({ Component, pageProps }) {
 - [Next.js](https://nextjs.org)
 - [Nextra](https://nextra.vercel.app/)
 - [Vercel](http://vercel.com)
+- [Posts](/posts)
 
 ### Footnotes
 

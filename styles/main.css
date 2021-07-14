@@ -16,7 +16,7 @@
 
 body[data-theme='light'] {
   --colors-primary: var(--colors-light-purple);
-  --colors-secondary: yellow;
+  --colors-secondary: #cc8899;
   --colors-accent: var(--colors-purple);
   --colors-text: var(--colors-black);
 }
@@ -36,14 +36,22 @@ body {
   --colors-purple: #432a79;
   --colors-light-purple: #645dd7;
   /* font-sizes */
-  --font-sizes-lg: 36px;
+  --font-sizes-sm: 0.875rem;
+  --font-sizes-md: 1rem;
+  --font-sizes-lg: 2rem;
   /* font-weights */
+  --font-weights-semibold: 'wght' 600;
   --font-weights-bold: 'wght' 850;
   /* spacing */
-  --spaces-sm: 4px;
-  --spaces-md: 16px;
+  --spaces-xs: 0.25rem;
+  --spaces-sm: 0.5rem;
+  --spaces-md: 1rem;
+  --spaces-lg: 2rem;
+  --spaces-xl: 3rem;
 
   background-color: var(--colors-light-gray);
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   font-family: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
@@ -56,11 +64,7 @@ body {
   letter-spacing: -0.02em;
 }
 b,
-strong,
-h3,
-h4,
-h5,
-h6 {
+strong {
   font-variation-settings: 'wght' 650;
 }
 h1 {
@@ -68,6 +72,23 @@ h1 {
 }
 h2 {
   font-variation-settings: 'wght' 750;
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.3rem;
+  font-variation-settings: 'wght' 650;
+}
+h4 {
+  font-size: 1.2rem;
+  font-variation-settings: 'wght' 650;
+}
+h5 {
+  font-size: 1.1rem;
+  font-variation-settings: 'wght' 650;
+}
+h6 {
+  font-size: 1rem;
+  font-variation-settings: 'wght' 650;
 }
 
 @media screen and (min-device-pixel-ratio: 1.5),
@@ -76,10 +97,6 @@ h2 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-}
-
-hr {
-  border-color: var(--colors-accent) !important;
 }
 
 details summary {

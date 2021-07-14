@@ -16,13 +16,10 @@ const JoSuzukiAnimated = () => {
   }, [])
 
   return (
-    <div className="container">
+    <div>
       <span className="jo">{`${text}`}</span>
       <span className="suzuki">Suzuki</span>
       <style jsx>{`
-        .container {
-          line-height: 1.15;
-        }
         .jo {
           font-size: var(--font-sizes-lg);
           font-variation-settings: var(--font-weights-bold);

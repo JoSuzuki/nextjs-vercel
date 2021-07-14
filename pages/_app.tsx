@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
-import '../theme/style.css'
 import Head from 'next/head'
 
+import '../styles/reset.css'
 import '../styles/main.css'
 
 export default function Nextra({ Component, pageProps }: AppProps) {

@@ -1,16 +1,18 @@
 ---
-type: home
-title: About
+type: customPage
+title: Home
 date: 2021-03-19
 ---
 
-import JoSuzukiAnimated from '../components/home/josuzuki-animated.tsx'
+import HomeNavbar from '../components/home/home-navbar.tsx'
 import QultureRocksLink from '../components/home/qulture-rocks-link.tsx'
 import SocialMediaLinks from '../components/social-media-links/social-media-links.tsx'
+import Container from '../components/home/container.tsx'
+import Posts from '../components/posts/posts.tsx'
 
-<article className="container prose prose-sm md:prose">
+<HomeNavbar />
 
-<JoSuzukiAnimated />
+<Container>
 
 Hey, I'm a Software Engineer at <QultureRocksLink />! I enjoy playing smash bros and making cool things with code.
 
@@ -18,10 +20,10 @@ Hey, I'm a Software Engineer at <QultureRocksLink />! I enjoy playing smash bros
 
 ## Recent posts
 
-
+<Posts limit={5} />
 
 ---
 
 <SocialMediaLinks />
 
-</article>
+</Container>

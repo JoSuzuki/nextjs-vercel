@@ -5,9 +5,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
+import { PagesContext } from '../../components/use-pages-context/use-pages-context'
+import Article from '../../components/article/article'
+
 import Meta from './meta'
 import Nav from './nav'
-import MDXTheme from './mdx-theme'
+import MDXTheme from '../../components/mdx-theme/mdx-theme'
+import Navbar from '../../components/navbar/navbar'
 
 import traverse from './utils/traverse'
 import getTitle from './utils/get-title'
@@ -16,15 +20,7 @@ import sortDate from './utils/sort-date'
 
 // type = 'post' | 'page' | 'tag' | 'customPage' | 'customPost'
 
-const Layout = ({
-  meta,
-  navPages,
-  postList,
-  back,
-  title,
-  children,
-}) => {
-  console.log(children)
+const Layout = ({ meta, title, children }) => {
   const [titleNode, contentNodes] = getTitle(children)
   const type = meta.type || 'post'
 
@@ -36,18 +32,11 @@ const Layout = ({
             <Head>
               <title>{title}</title>
             </Head>
-            <article className="container prose prose-sm md:prose">
+            <Navbar />
+            <Article>
               {titleNode}
-              {type === 'post' ? (
-                <Meta {...meta} back={back} />
-              ) : (
-                <Nav navPages={navPages} />
-              )}
-              <MDXTheme>
-                {contentNodes}
-              </MDXTheme>
-              {postList}
-            </article>
+              <MDXTheme>{contentNodes}</MDXTheme>
+            </Article>
           </React.Fragment>
         )
       case 'customPage':
@@ -76,12 +65,11 @@ const Layout = ({
             <Head>
               <title>{title}</title>
             </Head>
-            <article className="container prose prose-sm md:prose">
+            <Navbar />
+            <Article>
               {titleNode}
-              <Nav navPages={navPages} />
               <MDXTheme>{contentNodes}</MDXTheme>
-              {postList}
-            </article>
+            </Article>
           </React.Fragment>
         )
     }
@@ -90,72 +78,46 @@ const Layout = ({
   return getLayoutForType(type)
 }
 
-export default (opts, _config) => {
-  console.log('opts', opts)
-
+const withLayout = (opts, _config) => {
   // gather info for tag/posts pages
-  let posts = null
+  let posts = []
   let navPages = []
   const type = opts.meta.type || 'post'
   const route = opts.route
 
   // This only renders once per page
-  if (type === 'posts' || type === 'tag' || type === 'page') {
-    posts = []
-    // let's get all posts
-    traverse(opts.pageMap, (page) => {
-      if (
-        page.frontMatter &&
-        ['page', 'posts'].includes(page.frontMatter.type)
-      ) {
-        if (page.route === route) {
-          navPages.push({ ...page, active: true })
-        } else {
-          navPages.push(page)
-        }
+  // let's get all posts
+  traverse(opts.pageMap, (page) => {
+    if (
+      page.frontMatter &&
+      ['page', 'posts', 'customPage'].includes(page.frontMatter.type)
+    ) {
+      if (page.route === route) {
+        navPages.push({ ...page, active: true })
+      } else {
+        navPages.push(page)
       }
-      if (page.children) return
-      if (page.name.startsWith('_')) return
-      if (
-        type === 'posts' &&
-        !page.route.startsWith(route === '/' ? route : route + '/')
-      )
-        return
-      if (
-        type !== 'page' &&
-        (!page.frontMatter ||
-          !page.frontMatter.type ||
-          page.frontMatter.type === 'post')
-      ) {
-        posts.push(page)
-      }
-    })
-    posts = posts.sort(sortDate)
-    navPages = navPages.sort(sortDate)
-  }
-
-  // back button
-  let back = null
-  if (type === 'post') {
-    const parentPages = []
-    traverse(opts.pageMap, (page) => {
-      if (
-        route !== page.route &&
-        (route + '/').startsWith(page.route === '/' ? '/' : page.route + '/')
-      ) {
-        parentPages.push(page)
-      }
-    })
-    const parentPage = parentPages
-      .reverse()
-      .find((page) => page.frontMatter && page.frontMatter.type === 'posts')
-    if (parentPage) {
-      back = parentPage.route
     }
-  }
+    if (page.children) return
+    if (page.name.startsWith('_')) return
+    if (
+      type === 'posts' &&
+      !page.route.startsWith(route === '/' ? route : route + '/')
+    )
+      return
+    if (
+      type !== 'page' &&
+      (!page.frontMatter ||
+        !page.frontMatter.type ||
+        page.frontMatter.type === 'post')
+    ) {
+      posts.push(page)
+    }
+  })
+  posts = posts.sort(sortDate)
+  navPages = navPages.sort(sortDate)
 
   return (props) => {
-    console.log('render inside');
     const router = useRouter()
     const { query } = router
 
@@ -172,58 +134,12 @@ export default (opts, _config) => {
         : null) ||
       ''
 
-    const postList = posts ? (
-      <ul>
-        {posts.map((post) => {
-          if (tagName) {
-            const tags = getTags(post)
-            if (!tags.includes(tagName)) {
-              return null
-            }
-          } else if (type === 'tag') {
-            return null
-          }
-
-          const postTitle =
-            (post.frontMatter ? post.frontMatter.title : null) || post.name
-          const postDate = post.frontMatter ? (
-            <time className="post-item-date">
-              {new Date(post.frontMatter.date).toDateString()}
-            </time>
-          ) : null
-          const postDescription =
-            post.frontMatter && post.frontMatter.description ? (
-              <p className="post-item-desc">
-                {post.frontMatter.description}
-                <Link href={post.route}>
-                  <a className="post-item-more">Read More →</a>
-                </Link>
-              </p>
-            ) : null
-          return (
-            <div key={post.route} className="post-item">
-              <h3>
-                <Link href={post.route}>
-                  <a className="post-item-title">{postTitle}</a>
-                </Link>
-              </h3>
-              {postDescription}
-              {postDate}
-            </div>
-          )
-        })}
-      </ul>
-    ) : null
-
     return (
-      <Layout
-        postList={postList}
-        navPages={navPages}
-        back={back}
-        title={title}
-        {...opts}
-        {...props}
-      />
+      <PagesContext.Provider value={{ posts, navPages }}>
+        <Layout title={title} {...opts} {...props} />
+      </PagesContext.Provider>
     )
   }
 }
+
+export default withLayout
