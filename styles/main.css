@@ -14,7 +14,48 @@
   font-named-instance: 'Italic';
 }
 
+body[data-theme='light'] {
+  --colors-primary: var(--colors-light-purple);
+  --colors-secondary: #af4a4a;
+  --colors-accent: var(--colors-purple);
+  --colors-accent-background: var(--colors-purple-background);
+  --colors-text: var(--colors-black);
+}
+
+*::selection {
+  color: white;
+  background-color: var(--colors-selection);
+}
+
 body {
+  /* constants */
+  /* colors */
+  --colors-white: white;
+  --colors-black: black;
+  --colors-light-gray: #e9f1f7;
+  --colors-selection: #3297fd;
+  --colors-purple-background: #ebe2ff;
+  --colors-purple: #432a79;
+  --colors-light-purple: #645dd7;
+  /* font-sizes */
+  --font-sizes-xs: 0.75rem;
+  --font-sizes-sm: 0.875rem;
+  --font-sizes-md: 1rem;
+  --font-sizes-lg: 2rem;
+  /* font-weights */
+  --font-weights-semibold: 'wght' 600;
+  --font-weights-bold: 'wght' 850;
+  /* spacing */
+  --spaces-xs: 0.25rem;
+  --spaces-sm: 0.5rem;
+  --spaces-md: 1rem;
+  --spaces-lg: 2rem;
+  --spaces-xl: 3rem;
+
+  background-color: var(--colors-light-gray);
+  padding-left: 1rem;
+  padding-right: 1rem;
+
   font-family: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -26,11 +67,7 @@ body {
   letter-spacing: -0.02em;
 }
 b,
-strong,
-h3,
-h4,
-h5,
-h6 {
+strong {
   font-variation-settings: 'wght' 650;
 }
 h1 {
@@ -38,6 +75,23 @@ h1 {
 }
 h2 {
   font-variation-settings: 'wght' 750;
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.3rem;
+  font-variation-settings: 'wght' 650;
+}
+h4 {
+  font-size: 1.2rem;
+  font-variation-settings: 'wght' 650;
+}
+h5 {
+  font-size: 1.1rem;
+  font-variation-settings: 'wght' 650;
+}
+h6 {
+  font-size: 1rem;
+  font-variation-settings: 'wght' 650;
 }
 
 @media screen and (min-device-pixel-ratio: 1.5),
@@ -57,7 +111,7 @@ img.next-image {
 }
 
 .prose a {
-  color: #0074de;
+  color: var(--colors-primary);
 }
 
 .nav-line .nav-link {
