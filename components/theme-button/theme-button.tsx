@@ -22,7 +22,7 @@ const ThemeButton = () => {
 
   const updateTheme = (newTheme: THEMES) => {
     setTheme(newTheme)
-    document.body.setAttribute('data-theme', newTheme)
+    document.documentElement.setAttribute('data-theme', newTheme)
     localStorage.setItem(THEME_KEY, newTheme)
   }
 

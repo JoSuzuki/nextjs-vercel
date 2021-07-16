@@ -34,18 +34,19 @@ class MyDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
+              console.log(document.documentElement);
             (function(){
       const savedTheme = localStorage.getItem('theme')
-      if (savedTheme) {
-        document.body.setAttribute('data-theme', savedTheme)
+      if (savedTheme && savedTheme !== 'null') {
+        document.documentElement.setAttribute('data-theme', savedTheme)
       } else if (window.matchMedia) {
         const osTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light';
-        document.body.setAttribute('data-theme', osTheme)
+        document.documentElement.setAttribute('data-theme', osTheme)
         localStorage.setItem('theme', osTheme)
       } else {
-        document.body.setAttribute('data-theme', 'dark')
+        document.documentElement.setAttribute('data-theme', 'dark')
         localStorage.setItem('theme', 'dark')
       }
     })()`,
