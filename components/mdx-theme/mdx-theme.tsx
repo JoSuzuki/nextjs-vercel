@@ -319,6 +319,19 @@ const Td = ({ children, ...rest }: { children: ReactElement }) => (
   </td>
 )
 
+const InlineCode = ({ children, ...rest }: { children: ReactElement }) => (
+  <code {...rest}>
+    {children}
+    <style jsx>{`
+      code {
+        padding: 3px;
+        border-radius: 5px;
+        background-color: var(--colors-inline-code);
+      }
+    `}</style>
+  </code>
+)
+
 const components: MDXProviderComponentsProp = {
   h2: H2,
   h3: H3,
@@ -338,6 +351,7 @@ const components: MDXProviderComponentsProp = {
   th: Th,
   tr: Tr,
   td: Td,
+  inlineCode: InlineCode,
 }
 
 const MDXThemeWithSlugger = ({ children }: { children: ReactNode }) => {
