@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ThemeButton from '../theme-button/theme-button'
 import usePagesContext from '../use-pages-context/use-pages-context'
 
 const NavigationLinks = () => {
@@ -21,6 +22,9 @@ const NavigationLinks = () => {
           </li>
         )
       })}
+      <div className="theme-button-container">
+        <ThemeButton />
+      </div>
       <style jsx>{`
         .container {
           display: flex;
@@ -43,6 +47,9 @@ const NavigationLinks = () => {
           cursor: pointer;
           margin-left: var(--spaces-md);
           font-variation-settings: var(--font-weights-semibold);
+        }
+        .theme-button-container {
+          margin-left: var(--spaces-md);
         }
       `}</style>
     </ul>

@@ -17,18 +17,27 @@
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url(/fonts/space-grotesk.latin.var.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
 }
 
+body[data-theme='dark'] {
+  --colors-secondary: #c25b84;
+  --colors-accent: #7670db;
+  --colors-accent-background: #150044;
+  --colors-text: var(--colors-white);
+  --colors-background: #170440;
+}
+
 body[data-theme='light'] {
-  --colors-primary: var(--colors-light-purple);
-  --colors-secondary: #af4a4a;
-  --colors-accent: var(--colors-purple);
-  --colors-accent-background: var(--colors-purple-background);
+  --colors-secondary: #b34270;
+  --colors-accent: #432a79;
+  --colors-accent-background: #ebe2ff;
   --colors-text: var(--colors-black);
+  --colors-background: #e9f1f7;
 }
 
 *::selection {
@@ -41,11 +50,10 @@ body {
   /* colors */
   --colors-white: white;
   --colors-black: black;
-  --colors-light-gray: #e9f1f7;
   --colors-selection: #3297fd;
-  --colors-purple-background: #ebe2ff;
   --colors-purple: #432a79;
-  --colors-light-purple: #645dd7;
+  --colors-purple-background: #ebe2ff;
+
   /* font-sizes */
   --font-sizes-xs: 0.75rem;
   --font-sizes-sm: 0.875rem;
@@ -61,7 +69,9 @@ body {
   --spaces-lg: 2rem;
   --spaces-xl: 3rem;
 
-  background-color: var(--colors-light-gray);
+  color: var(--colors-text);
+  background-color: var(--colors-background);
+
   padding-left: 1rem;
   padding-right: 1rem;
 
@@ -117,12 +127,4 @@ details summary {
 
 img.next-image {
   margin: 0;
-}
-
-.prose a {
-  color: var(--colors-primary);
-}
-
-.nav-line .nav-link {
-  color: #69778c;
 }

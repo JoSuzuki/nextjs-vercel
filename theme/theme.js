@@ -122,7 +122,7 @@ const withLayout = (opts, _config) => {
   posts = posts.sort(sortDate)
   navPages = navPages.sort(sortDate)
 
-  return (props) => {
+  const ComponentWithLayout = (props) => {
     const router = useRouter()
     const { query } = router
 
@@ -155,6 +155,8 @@ const withLayout = (opts, _config) => {
       </PagesContext.Provider>
     )
   }
+
+  return ComponentWithLayout
 }
 
 export default withLayout

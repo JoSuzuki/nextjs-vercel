@@ -38,13 +38,13 @@ const JoSuzukiAnimated = () => {
             border-color: transparent;
           }
           15% {
-            border-color: black;
+            border-color: var(--colors-text);
           }
           30% {
             border-color: transparent;
           }
           44% {
-            border-color: black;
+            border-color: var(--colors-text);
           }
           to {
             border-right: none 0px;

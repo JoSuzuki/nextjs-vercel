@@ -8,7 +8,7 @@ const Footer = () => {
       <span>
         <time>{YEAR}</time> © Jonathan Suzuki.
       </span>
-      <SocialMediaLinks size="20px" />
+      <SocialMediaLinks />
       <style jsx>{`
         div {
           display: flex;

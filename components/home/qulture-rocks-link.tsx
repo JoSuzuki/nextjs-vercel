@@ -17,6 +17,7 @@ const QultureRocksLink = () => {
           position: absolute;
           content: 'qulture.rocks';
           background-color: #cd90ff;
+          color: var(--colors-black);
           clip-path: polygon(1% 15%,1% 15%, 0% 84%, 0 84%);
           transition: clip-path 275ms ease;
           top: -3px;
