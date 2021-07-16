@@ -22,9 +22,9 @@ const NavigationLinks = () => {
           </li>
         )
       })}
-      <div className="theme-button-container">
+      <li className="theme-button-container">
         <ThemeButton />
-      </div>
+      </li>
       <style jsx>{`
         .container {
           display: flex;
