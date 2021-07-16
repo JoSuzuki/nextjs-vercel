@@ -8,6 +8,8 @@ import Article from '../components/article/article'
 
 import MDXTheme from '../components/mdx-theme/mdx-theme'
 import Navbar from '../components/navbar/navbar'
+import PostMeta from '../components/post-meta/post-meta'
+import PreviousNextPosts from '../components/previous-next-posts/previous-next-posts'
 import Footer from '../components/footer/footer'
 
 import traverse from './utils/traverse'
@@ -31,7 +33,9 @@ const Layout = ({ meta, title, children }) => {
             <Navbar />
             <Article>
               {titleNode}
+              <PostMeta />
               <MDXTheme>{contentNodes}</MDXTheme>
+              <PreviousNextPosts />
               <Footer />
             </Article>
           </React.Fragment>
@@ -135,8 +139,18 @@ const withLayout = (opts, _config) => {
         : null) ||
       ''
 
-    return (
-      <PagesContext.Provider value={{ posts, navPages }}>
+      return (
+      <PagesContext.Provider
+        value={{
+          posts,
+          navPages,
+          currentPage: {
+            filename: opts.filename,
+            route: opts.route,
+            meta: opts.meta,
+          },
+        }}
+      >
         <Layout title={title} {...opts} {...props} />
       </PagesContext.Provider>
     )

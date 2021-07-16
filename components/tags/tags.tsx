@@ -52,4 +52,29 @@ const Tag = ({ children }: { children: string }) => {
   )
 }
 
-export default Tag
+interface TagsProps {
+  tags: string[]
+}
+
+const Tags = ({ tags }: TagsProps) => {
+  return (
+    <div className="container">
+      {tags.map((tag) => (
+        <div key={tag} className="tag">
+          <Tag>{tag}</Tag>
+        </div>
+      ))}
+      <style jsx>{`
+        .container {
+          display: flex;
+          align-items: center;
+        }
+        .tag {
+          margin-right: var(--spaces-xs);
+        }
+      `}</style>
+    </div>
+  )
+}
+
+export default Tags

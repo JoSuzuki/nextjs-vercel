@@ -1,6 +1,8 @@
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
-import Tag from '../tag/tag'
+import formatDate from '../../utils/format-date'
+import CommonLink from '../common-link/common-link'
+import Tags from '../tags/tags'
 import usePagesContext from '../use-pages-context/use-pages-context'
 
 interface PostsProps {
@@ -23,15 +25,15 @@ const Posts = ({ limit }: PostsProps) => {
         const postTitle = post.frontMatter?.title ?? post.name
         const postDate = post.frontMatter ? (
           <time dateTime={post.frontMatter.date}>
-            {new Date(post.frontMatter.date).toLocaleDateString()}
+            {formatDate(post.frontMatter.date)}
           </time>
         ) : null
         const postDescription = post.frontMatter?.description && (
           <p>
             {post.frontMatter.description}
-            <Link href={post.route}>
-              <a className="read-more">Read More →</a>
-            </Link>
+            <span className="read-more">
+              <CommonLink href={post.route}>Leia Mais →</CommonLink>
+            </span>
           </p>
         )
 
@@ -49,11 +51,7 @@ const Posts = ({ limit }: PostsProps) => {
               <div className="date">{postDate}</div>-
               <div className="author">{postAuthor}</div>-
               <div className="tags">
-                {postTags.map((postTag) => (
-                  <div key={postTag} className="tag">
-                    <Tag>{postTag}</Tag>
-                  </div>
-                ))}
+                <Tags tags={postTags} />
               </div>
             </div>
           </li>
@@ -71,13 +69,6 @@ const Posts = ({ limit }: PostsProps) => {
           margin-left: var(--spaces-xs);
           margin-right: var(--spaces-xs);
         }
-        .tags {
-          display: flex;
-          align-items: center;
-        }
-        .tag {
-          margin-right: var(--spaces-xs);
-        }
         .more-info {
           display: flex;
           align-items: center;
@@ -86,8 +77,6 @@ const Posts = ({ limit }: PostsProps) => {
         }
         .read-more {
           margin-left: var(--spaces-sm);
-          text-decoration: underline;
-          color: var(--colors-secondary);
         }
       `}</style>
     </ul>

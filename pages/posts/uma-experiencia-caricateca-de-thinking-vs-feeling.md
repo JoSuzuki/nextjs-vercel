@@ -5,7 +5,7 @@ title: 'Uma experiência caricateca de thinking vs feeling'
 description: 'Pra quem não sabe eu gosto bastante de tipos de personalidade e hoje vou compartilhar uma das experiências mais caricatecas...'
 
 tags:
-  - reflexo
+  - reflexões
   - tipos de personalidade
   - 3am writings
   - dia a dia

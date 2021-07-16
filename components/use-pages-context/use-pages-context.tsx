@@ -1,5 +1,11 @@
 import React from 'react'
 
+interface CurrentPost {
+  filename: string
+  route: string
+  meta?: Record<string, any>
+}
+
 interface Post {
   name: string
   route: string
@@ -16,9 +22,11 @@ interface NavPage {
 export const PagesContext = React.createContext<{
   posts: Post[]
   navPages: NavPage[]
+  currentPage: CurrentPost
 }>({
   posts: [],
   navPages: [],
+  currentPage: { filename: '', route: '' },
 })
 
 const usePagesContext = () => React.useContext(PagesContext)

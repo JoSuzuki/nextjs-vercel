@@ -16,6 +16,7 @@ import Highlight, {
   PrismTheme,
 } from 'prism-react-renderer'
 import styles from './mdx-theme.module.css'
+import CommonLink from '../common-link/common-link'
 
 const THEME: PrismTheme = {
   plain: {
@@ -164,42 +165,6 @@ const H6 = ({ children, ...props }: { children: ReactElement }) => {
   )
 }
 
-const A = ({
-  children,
-  ...props
-}: {
-  children: ReactElement
-  href: string
-}) => {
-  const isExternal = props.href && props.href.startsWith('https://')
-  if (isExternal) {
-    return (
-      <a target="_blank" rel="noopener" {...props}>
-        {children}
-        <style jsx>{`
-          a {
-            text-decoration: underline;
-            color: var(--colors-secondary);
-          }
-        `}</style>
-      </a>
-    )
-  }
-  return (
-    <Link href={props.href}>
-      <a {...props}>
-        {children}
-        <style jsx>{`
-          a {
-            text-decoration: underline;
-            color: var(--colors-secondary);
-          }
-        `}</style>
-      </a>
-    </Link>
-  )
-}
-
 const Pre = ({ children, ...rest }: { children: ReactElement }) => (
   <pre {...rest}>
     {children}
@@ -243,7 +208,7 @@ const Code = ({
 
   // https://mdxjs.com/guides/syntax-highlighting#all-together
   const language = className.replace(/language-/, '') as Language
-  console.log(className)
+
   return (
     <Highlight
       {...defaultProps}
@@ -418,7 +383,7 @@ const components: MDXProviderComponentsProp = {
   h4: H4,
   h5: H5,
   h6: H6,
-  a: A,
+  a: CommonLink,
   code: Code,
   p: P,
   blockquote: Blockquote,

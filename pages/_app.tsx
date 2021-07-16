@@ -22,8 +22,11 @@ export default function Nextra({ Component, pageProps }: AppProps) {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/space-grotesk.latin.var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
       </Head>
       <Component {...pageProps} />
