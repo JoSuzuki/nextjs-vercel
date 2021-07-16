@@ -31,6 +31,26 @@ class MyDocument extends Document {
           <meta name="twitter:site" content="@jo_suzuki" />
           <meta name="twitter:title" content={meta.title} />
           <meta name="twitter:description" content={meta.description} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            (function(){
+      const savedTheme = localStorage.getItem('theme')
+      if (savedTheme) {
+        document.body.setAttribute('data-theme', savedTheme)
+      } else if (window.matchMedia) {
+        const osTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+        document.body.setAttribute('data-theme', osTheme)
+        localStorage.setItem('theme', osTheme)
+      } else {
+        document.body.setAttribute('data-theme', 'dark')
+        localStorage.setItem('theme', 'dark')
+      }
+    })()`,
+            }}
+          ></script>
         </Head>
         <body>
           <Main />
