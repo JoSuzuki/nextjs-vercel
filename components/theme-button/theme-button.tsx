@@ -13,7 +13,7 @@ const themeMap = {
 }
 
 const ThemeButton = () => {
-  const [theme, setTheme] = useState<THEMES>(THEMES.dark)
+  const [theme, setTheme] = useState<THEMES | null>(null)
 
   useEffect(() => {
     const savedTheme = localStorage.getItem(THEME_KEY) as THEMES
@@ -33,7 +33,7 @@ const ThemeButton = () => {
 
   return (
     <button onClick={toggleTheme} aria-label="Trocar tema">
-      {themeMap[theme]}
+      {theme === null ? null : themeMap[theme]}
       <style jsx>{`
         button {
           position: relative;
