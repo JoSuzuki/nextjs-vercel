@@ -50,9 +50,8 @@ const Posts = ({ limit }: PostsProps) => {
             <div className="more-info">
               <div className="date">{postDate}</div>-
               <div className="author">{postAuthor}</div>-
-              <div className="tags">
-                <Tags tags={postTags} />
-              </div>
+              <div className="pre-tags"></div>
+              <Tags tags={postTags} />
             </div>
           </li>
         )
@@ -64,14 +63,17 @@ const Posts = ({ limit }: PostsProps) => {
         .date {
           margin-right: var(--spaces-xs);
         }
-        .author,
-        .tags {
+        .author {
           margin-left: var(--spaces-xs);
+          margin-right: var(--spaces-xs);
+        }
+        .pre-tags {
           margin-right: var(--spaces-xs);
         }
         .more-info {
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
           color: var(--colors-accent);
           font-size: var(--font-sizes-sm);
         }

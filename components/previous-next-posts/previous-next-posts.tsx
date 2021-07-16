@@ -15,22 +15,26 @@ const PreviousNextPosts = () => {
     <div className="container">
       <div className="pause">• • •</div>
       <div className="links-container">
-        {previousPost && (
-          <div className="link-container previous">
-            <div>← Anterior</div>
-            <CommonLink href={previousPost.route}>
-              {previousPost.frontMatter?.title}
-            </CommonLink>
-          </div>
-        )}
-        {nextPost && (
-          <div className="link-container next">
-            <div>Próximo →</div>
-            <CommonLink href={nextPost.route}>
-              {nextPost.frontMatter?.title}
-            </CommonLink>
-          </div>
-        )}
+        <div className="link-container previous">
+          {previousPost && (
+            <>
+              <div>← Anterior</div>
+              <CommonLink href={previousPost.route}>
+                {previousPost.frontMatter?.title}
+              </CommonLink>
+            </>
+          )}
+        </div>
+        <div className="link-container next">
+          {nextPost && (
+            <>
+              <div>Próximo →</div>
+              <CommonLink href={nextPost.route}>
+                {nextPost.frontMatter?.title}
+              </CommonLink>
+            </>
+          )}
+        </div>
       </div>
       <style jsx>{`
         .container {

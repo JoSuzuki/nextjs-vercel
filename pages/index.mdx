@@ -4,21 +4,21 @@ title: Home
 date: 2021-03-19
 ---
 
-import HomeNavbar from '../components/home/home-navbar.tsx'
-import QultureRocksLink from '../components/home/qulture-rocks-link.tsx'
-import SocialMediaLinks from '../components/social-media-links/social-media-links.tsx'
-import Container from '../components/home/container.tsx'
-import Posts from '../components/posts/posts.tsx'
+import HomeNavbar from '../components/home/home-navbar'
+import QultureRocksLink from '../components/home/qulture-rocks-link'
+import SocialMediaLinks from '../components/social-media-links/social-media-links'
+import Article from '../components/article/article'
+import Posts from '../components/posts/posts'
 
 <HomeNavbar />
 
-<Container>
+<Article>
 
 Hey, I'm a software engineer at <QultureRocksLink />! I enjoy playing smash bros and making cool things with code.
 
 ---
 
-## Recent posts
+## Posts recentes
 
 <Posts limit={5} />
 
@@ -26,4 +26,4 @@ Hey, I'm a software engineer at <QultureRocksLink />! I enjoy playing smash bros
 
 <SocialMediaLinks />
 
-</Container>
+</Article>

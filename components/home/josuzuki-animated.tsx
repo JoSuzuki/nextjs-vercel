@@ -16,10 +16,17 @@ const JoSuzukiAnimated = () => {
   }, [])
 
   return (
-    <div>
+    <div className="container">
       <span className="jo">{`${text}`}</span>
       <span className="suzuki">Suzuki</span>
       <style jsx>{`
+        .container {
+          flex-wrap: nowrap;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 55vw;
+        }
         .jo {
           font-size: var(--font-sizes-lg);
           font-variation-settings: var(--font-weights-bold);

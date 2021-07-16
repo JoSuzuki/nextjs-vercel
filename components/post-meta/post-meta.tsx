@@ -12,13 +12,13 @@ const PostMeta = () => {
     <div className="container">
       <div className="author">{currentPage.meta.author}</div>-
       <div className="date">{formatDate(currentPage.meta.date)}</div>-
-      <div className="tags">
-        <Tags tags={currentPage.meta.tags} />
-      </div>
+      <div className="pre-tags"></div>
+      <Tags tags={currentPage.meta.tags} />
       <style jsx>{`
         .container {
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
           font-size: var(--font-sizes-sm);
           margin-bottom: var(--spaces-md);
         }
@@ -29,8 +29,8 @@ const PostMeta = () => {
           margin-right: var(--spaces-xs);
           margin-left: var(--spaces-xs);
         }
-        .tags {
-          margin-left: var(--spaces-xs);
+        .pre-tags {
+          margin-right: var(--spaces-xs);
         }
       `}</style>
     </div>

@@ -3,7 +3,6 @@ date: 2020-03-22
 author: Jonathan Suzuki
 title: 'Uma experiência caricateca de thinking vs feeling'
 description: 'Pra quem não sabe eu gosto bastante de tipos de personalidade e hoje vou compartilhar uma das experiências mais caricatecas...'
-
 tags:
   - reflexões
   - tipos de personalidade
