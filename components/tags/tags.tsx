@@ -40,10 +40,16 @@ const Tag = ({ children }: { children: string }) => {
             line-height: 1.2;
             background-color: var(--colors-accent-background);
             box-shadow: 1px 1px 0 0 var(--colors-accent);
+            position: relative;
           }
           a:hover {
-            margin-top: 1px;
-            margin-left: 1px;
+            top: -1px;
+            left: -1px;
+            box-shadow: 2px 2px 0 0 var(--colors-accent);
+          }
+          a:active {
+            top: 1px;
+            left: 1px;
             box-shadow: 0px 0px 0 0 var(--colors-accent);
           }
         `}</style>
