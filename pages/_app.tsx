@@ -8,7 +8,9 @@ export default function Nextra({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <script>{`(function(){
+        <script>{`
+        alert('stop');
+        (function(){
   const savedTheme = localStorage.getItem('theme')
   if (savedTheme) {
     document.body.setAttribute('data-theme', savedTheme)
