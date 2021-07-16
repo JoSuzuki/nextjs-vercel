@@ -14,8 +14,9 @@ class MyDocument extends Document {
 
   render() {
     const meta = {
-      title: 'JoSuzuki Blog',
-      description: 'Escrevendo, aprendendo, refletindo. Vivendo.',
+      title: 'JoSuzuki',
+      description:
+        'Software engineer, smash bros player. Currently doing cool things with code.',
     }
 
     return (
