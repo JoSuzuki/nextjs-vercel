@@ -22,13 +22,18 @@ const Layout = ({ meta, title, children }) => {
   const [titleNode, contentNodes] = getTitle(children)
   const type = meta.type || 'post'
 
+  const pageTitle = <title>{title} | JoSuzuki</title>
+
   const getLayoutForType = (type) => {
     switch (type) {
       case 'post':
         return (
           <React.Fragment>
             <Head>
-              <title>{title}</title>
+              {pageTitle}
+              <meta property="og:description" content={meta.description} />
+              <meta name="twitter:description" content={meta.description} />
+              <meta name="twitter:title" content={meta.title} />
             </Head>
             <Navbar />
             <Article>
@@ -43,18 +48,14 @@ const Layout = ({ meta, title, children }) => {
       case 'customPage':
         return (
           <React.Fragment>
-            <Head>
-              <title>{title}</title>
-            </Head>
+            <Head>{pageTitle}</Head>
             <MDXTheme>{contentNodes}</MDXTheme>
           </React.Fragment>
         )
       case 'customPost': // TODO: not being used yet, you can change as you want
         return (
           <React.Fragment>
-            <Head>
-              <title>{title}</title>
-            </Head>
+            <Head>{pageTitle}</Head>
             <MDXTheme>{contentNodes}</MDXTheme>
           </React.Fragment>
         )
@@ -63,9 +64,7 @@ const Layout = ({ meta, title, children }) => {
       default:
         return (
           <React.Fragment>
-            <Head>
-              <title>{title}</title>
-            </Head>
+            <Head>{pageTitle}</Head>
             <Navbar />
             <Article>
               {titleNode}
@@ -139,7 +138,7 @@ const withLayout = (opts, _config) => {
         : null) ||
       ''
 
-      return (
+    return (
       <PagesContext.Provider
         value={{
           posts,
