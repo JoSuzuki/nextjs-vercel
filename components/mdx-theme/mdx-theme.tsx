@@ -8,80 +8,22 @@ import {
 } from 'react'
 import { MDXProvider, MDXProviderComponentsProp } from '@mdx-js/react'
 import Slugger from 'github-slugger'
-import Link from 'next/link'
 import React from 'react'
 import Highlight, {
   defaultProps,
   Language,
   PrismTheme,
 } from 'prism-react-renderer'
+import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import styles from './mdx-theme.module.css'
 import CommonLink from '../common-link/common-link'
 
-const THEME: PrismTheme = {
-  plain: {
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-  styles: [
-    {
-      types: ['keyword'],
-      style: {
-        color: '#ff0078',
-        fontWeight: 'bold',
-      },
-    },
-    {
-      types: ['comment'],
-      style: {
-        color: '#999',
-        fontStyle: 'italic',
-      },
-    },
-    {
-      types: ['string', 'url', 'attr-value'],
-      style: {
-        color: '#028265',
-      },
-    },
-    {
-      types: ['variable', 'language-javascript'],
-      style: {
-        color: '#c6c5fe',
-      },
-    },
-    {
-      types: ['builtin', 'char', 'constant'],
-      style: {
-        color: '#ffffff',
-      },
-    },
-    {
-      types: ['attr-name'],
-      style: {
-        color: '#d9931e',
-        fontStyle: 'normal',
-      },
-    },
-    {
-      types: ['punctuation', 'operator'],
-      style: {
-        color: '#999',
-      },
-    },
-    {
-      types: ['number', 'function', 'tag'],
-      style: {
-        color: '#0076ff',
-      },
-    },
-    {
-      types: ['boolean', 'regex'],
-      style: {
-        color: '#d9931e',
-      },
-    },
-  ],
+function chanceOfSeeingTheSameSkin(numberOfSkinsSeen: number) {
+  let p = (1.0 / 1251) ** numberOfSkinsSeen
+  for (let i = 1252 - numberOfSkinsSeen; i < 1252; i++) {
+    p *= i
+  }
+  return 1 - p
 }
 
 // Anchor links
@@ -171,13 +113,13 @@ const Pre = ({ children, ...rest }: { children: ReactElement }) => (
     <style jsx>{`
       pre {
         color: #e2e8f0;
-        background-color: #2d3748;
+        background-color: #061526;
         overflow-x: auto;
         font-size: 0.875em;
         margin-top: var(--spaces-md);
         margin-bottom: var(--spaces-md);
         padding: var(--spaces-md);
-        box-shadow: 5px 5px 0px 0px #002dc2;
+        box-shadow: 4px 4px 0px 0px #3d6fa7;
       }
     `}</style>
   </pre>
@@ -214,7 +156,7 @@ const Code = ({
       {...defaultProps}
       code={children.trim()}
       language={language}
-      theme={THEME}
+      theme={nightOwl}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <code className={className} style={{ ...style }}>
