@@ -34,7 +34,6 @@ class MyDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-              console.log(document.documentElement);
             (function(){
       const savedTheme = localStorage.getItem('theme')
       if (savedTheme && savedTheme !== 'null') {
