@@ -7,7 +7,6 @@ const PostMeta = () => {
 
   if (!currentPage.meta) return null
 
-  console.log(currentPage.meta)
   return (
     <div className="container">
       <div className="author">{currentPage.meta.author}</div>-
