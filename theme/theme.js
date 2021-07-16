@@ -31,6 +31,7 @@ const Layout = ({ meta, title, children }) => {
           <React.Fragment>
             <Head>
               {pageTitle}
+              <meta name="description" content={meta.description} />
               <meta property="og:description" content={meta.description} />
               <meta name="twitter:description" content={meta.description} />
               <meta name="twitter:title" content={meta.title} />
