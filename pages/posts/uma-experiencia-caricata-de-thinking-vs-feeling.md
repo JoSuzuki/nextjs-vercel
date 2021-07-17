@@ -1,8 +1,8 @@
 ---
 date: 2020-03-22
 author: Jonathan Suzuki
-title: 'Uma experiência caricateca de thinking vs feeling'
-description: 'Pra quem não sabe eu gosto bastante de tipos de personalidade e hoje vou compartilhar uma das experiências mais caricatecas...'
+title: 'Uma experiência caricata de thinking vs feeling'
+description: 'Pra quem não sabe eu gosto bastante de tipos de personalidade e hoje vou compartilhar uma das experiências mais caricatas...'
 tags:
   - reflexões
   - tipos de personalidade
@@ -10,9 +10,9 @@ tags:
   - dia a dia
 ---
 
-# Uma experiência caricateca de thinking vs feeling
+# Uma experiência caricata de thinking vs feeling
 
-Pra quem não sabe eu gosto bastante de tipos de personalidade e hoje vou compartilhar uma das experiências mais caricatecas (acho que inventei essa palavra, no sentido de caricatura) que eu tive na vida. Eu fiz uma matéria optativa na faculdade que tinha o nome de "Careers: New opportunities and development" ou algo do gênero.
+Pra quem não sabe eu gosto bastante de tipos de personalidade e hoje vou compartilhar uma das experiências mais caricatas (acho que inventei essa palavra, no sentido de caricatura) que eu tive na vida. Eu fiz uma matéria optativa na faculdade que tinha o nome de "Careers: New opportunities and development" ou algo do gênero.
 
 Em uma das aulas a professora pediu pra que a gente fizesse o teste do mbti e na próxima aula a gente teria uma dinâmica e uma apresentação sobre aquilo.
 
