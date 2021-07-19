@@ -1,28 +1,10 @@
 import React from 'react'
-
-interface CurrentPost {
-  filename: string
-  route: string
-  meta?: Record<string, any>
-}
-
-interface Post {
-  name: string
-  route: string
-  frontMatter?: Record<string, any>
-}
-
-interface NavPage {
-  name: string
-  route: string
-  active?: boolean
-  frontMatter?: Record<string, any>
-}
+import { CurrentPage, NavPage, Page } from '../../nextra-theme/theme'
 
 export const PagesContext = React.createContext<{
-  posts: Post[]
+  posts: Page[]
   navPages: NavPage[]
-  currentPage: CurrentPost
+  currentPage: CurrentPage
 }>({
   posts: [],
   navPages: [],

@@ -12,19 +12,55 @@ import PostMeta from '../components/post-meta/post-meta'
 import PreviousNextPosts from '../components/previous-next-posts/previous-next-posts'
 import Footer from '../components/footer/footer'
 
-import traverse from './utils/traverse'
-import getTitle from './utils/get-title'
-import sortDate from './utils/sort-date'
+import traverse from '../utils/traverse'
+import getTitle from '../utils/get-title'
+import sortDate from '../utils/sort-date'
 
-// type = 'post' | 'page' | 'tag' | 'customPage' | 'customPost'
+export interface CurrentPage {
+  filename: string
+  route: string
+  meta?: Record<string, any>
+}
 
-const Layout = ({ meta, title, children }) => {
+export interface Page {
+  name: string
+  route: string
+  frontMatter?: Record<string, any>
+  children?: React.ReactElement
+}
+
+export interface NavPage {
+  name: string
+  route: string
+  active?: boolean
+  frontMatter?: Record<string, any>
+}
+
+interface Opts {
+  filename: string
+  route: string
+  pageMap: Page[]
+  /* Frontmatter attributes */
+  meta: Record<string, any>
+}
+
+type MDXFileChildren = any // these will be the children of mdx file
+
+interface LayoutProps {
+  children: MDXFileChildren
+  title: React.ReactElement
+  meta: Record<string, any>
+}
+
+const Layout = ({ meta, title, children }: LayoutProps) => {
   const [titleNode, contentNodes] = getTitle(children)
   const type = meta.type || 'post'
 
   const pageTitle = <title>{title} | JoSuzuki</title>
 
-  const getLayoutForType = (type) => {
+  const getLayoutForType = (
+    type: 'post' | 'customPage' | 'customPost' | 'tag' | 'page',
+  ) => {
     switch (type) {
       case 'post':
         return (
@@ -80,16 +116,16 @@ const Layout = ({ meta, title, children }) => {
   return getLayoutForType(type)
 }
 
-const withLayout = (opts, _config) => {
+const withLayout = (opts: Opts) => {
   // gather info for tag/posts pages
-  let posts = []
-  let navPages = []
+  let posts: Page[] = []
+  let navPages: NavPage[] = []
   const type = opts.meta.type || 'post'
   const route = opts.route
 
   // This only renders once per page
   // let's get all posts
-  traverse(opts.pageMap, (page) => {
+  traverse(opts.pageMap, (page: Page) => {
     if (
       page.frontMatter &&
       ['page', 'posts', 'customPage'].includes(page.frontMatter.type)
@@ -122,7 +158,7 @@ const withLayout = (opts, _config) => {
   posts = posts.sort(sortDate)
   navPages = navPages.sort(sortDate)
 
-  const ComponentWithLayout = (props) => {
+  const ComponentWithLayout = (props: MDXFileChildren) => {
     const router = useRouter()
     const { query } = router
 
@@ -135,7 +171,9 @@ const withLayout = (opts, _config) => {
       (typeof tagName === 'undefined'
         ? null
         : titleNode
-        ? ReactDOMServer.renderToStaticMarkup(titleNode.props.children)
+        ? ReactDOMServer.renderToStaticMarkup(
+            (titleNode as React.ReactElement).props.children,
+          )
         : null) ||
       ''
 
