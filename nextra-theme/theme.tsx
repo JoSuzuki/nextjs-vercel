@@ -15,6 +15,7 @@ import Footer from '../components/footer/footer'
 import traverse from '../utils/traverse'
 import getTitle from '../utils/get-title'
 import sortDate from '../utils/sort-date'
+import Comments from '../components/comments/comments'
 
 export interface CurrentPage {
   filename: string
@@ -77,6 +78,7 @@ const Layout = ({ meta, title, children }: LayoutProps) => {
               {titleNode}
               <PostMeta />
               <MDXTheme>{contentNodes}</MDXTheme>
+              <Comments />
               <PreviousNextPosts />
               <Footer />
             </Article>

@@ -1,7 +1,9 @@
-const formatDate = (date: string): string => {
+type unix = number
+
+const formatDate = (date: string | unix): string => {
   const jsDate = new Date(date)
 
-  return `${jsDate.getDay()}/${jsDate.getMonth() + 1}/${jsDate.getFullYear()}`
+  return `${jsDate.getDate()}/${jsDate.getMonth() + 1}/${jsDate.getFullYear()}`
 }
 
 export default formatDate

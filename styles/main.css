@@ -53,6 +53,7 @@
   --colors-secondary: #c25b84;
   --colors-accent: #7670db;
   --colors-accent-background: #150044;
+  --colors-dimmed: #522ba9;
   --colors-text: var(--colors-white);
   --colors-background: #170440;
   --colors-inline-code: #4842b3;
@@ -62,6 +63,7 @@
   --colors-secondary: #b34270;
   --colors-accent: #432a79;
   --colors-accent-background: #ebe2ff;
+  --colors-dimmed: #bbd1e2;
   --colors-text: var(--colors-black);
   --colors-background: #e9f1f7;
   --colors-inline-code: #cae8ff;
